@@ -17,7 +17,7 @@ class AuthController extends Controller
     public function register(Request $request){
         $validator = Validator::make($request->all(),[
             'name'=>'required',
-            'email'=>'required|string|email|unique:users',
+            'nomor_hp'=>'required|numeric|unique:users|min:10',
             'password'=>'required|string|confirmed|min:6'
         ]);
         if($validator->fails()){
@@ -38,7 +38,7 @@ class AuthController extends Controller
 
     public function login(Request $request){
         $validator = Validator::make($request->all(),[
-            'email'=>'required|email',
+            'nomor_hp'=>'required|numeric',
             'password'=>'required|string|min:6'
         ]);
         if($validator->fails()){

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class BarangRequest extends FormRequest
+class PertanyaanRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,36 +25,33 @@ class BarangRequest extends FormRequest
     {
         if (request()->isMethod('post')) {
             return[
-                'nama' => 'required|string|max:258',
-                'harga' => 'required|string|max:10',
-                'foto' => 'required|image|mimes:jpeg,png,jpg,giv,svg|max:2048'
+                'judul' => 'required|string|max:258',
+                'jawaban' => 'required|string|max:99999999',
+                
             ];
         }else {
             return[
-                'nama' => 'required|string|max:258',
-                'harga' => 'required|string|max:10',
-                'foto' => 'required|image|mimes:jpeg,png,jpg,giv,svg|max:2048'
-            ];
-        }
-        
-    }
-    public function messages()
-   
-    {
-        if (request ()->isMethod('post')) {
-            return[
-                'nama' => 'Nama is required',
-                'harga' => 'harga is required',
-                'foto' => 'foto is required'
-            ];
-        }else {
-            return[
-                'nama' => 'Nama is required',
-                'harga' => 'harga is required',
+                'judul' => 'required|string|max:258',
+                'jawaban' => 'required|string|max:99999999',
                 
             ];
         }
-        
     }
 
+    public function messages()
+    {
+        if (request ()->isMethod('post')) {
+            return[
+                'judul' => 'judul is required',
+                'jawaban' => 'jawaban is required',
+                
+            ];
+        }else {
+            return[
+                'judul' => 'Judul is required',
+                'jawaban' => 'jawaban is required',
+                
+            ];
+        }
+    }
 }

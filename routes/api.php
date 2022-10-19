@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PertanyaanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,16 @@ Route::get('/barang/{id}',[BarangController::class, 'show']);
 Route::delete('/barang/{id}', [BarangController::class, 'destroy']);
 Route::put('/barang/{id}', [BarangController::class, 'update']);
 Route::post('/barang', [BarangController::class, 'store']);
+
+
+
+Route::get('/pertanyaan', [PertanyaanController::class, 'index']);
+Route::get('/pertanyaan/{id}',[PertanyaanController::class, 'show']);
+Route::delete('/pertanyaan/{id}', [PertanyaanController::class, 'destroy']);
+Route::put('/pertanyaan/{id}', [PertanyaanController::class, 'update']);
+Route::post('/pertanyaan', [PertanyaanController::class, 'store']);
+
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
