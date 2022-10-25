@@ -43,10 +43,14 @@ class BarangController extends Controller
        
             ///Folder simpan foto
             Storage::disk('public') -> put($imageName, file_get_contents($request->foto));
+            $url = Storage::url("/storage/app/{$imageName}");
+            $path = public_path($url);
 
             //Json Response
             return response()->json([
-                'message' => "Barang berhasil ditambahkan"
+                'message' => "Barang berhasil ditambahkan",
+                'foto' => $path
+                
             ],200);
         }catch(\Exception $e) {
             return response()->json([
