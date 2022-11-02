@@ -7,6 +7,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PertanyaanController;
 use App\Http\Controllers\TabunganController;
 use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\PesanController;
+use App\Http\Controllers\EmasController;
+use App\Http\Controllers\CuciController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,9 +38,15 @@ Route::post('/pertanyaan', [PertanyaanController::class, 'store']);
 
 
 // tabungan
-Route::get('/tabungan/show', [TabunganController::class, 'index']);
+
+//Route api 
+Route::group(['middleware' => 'auth:api'], function ($router) {
+    Route::get('/tabungan/show', [TabunganController::class, 'index']);
+    Route::post('/tabungan/store', [TabunganController::class, 'store']);
+});
+
 // insert tabungan
-Route::post('/tabungan/store', [TabunganController::class, 'store']);
+
 
 
 
@@ -54,3 +63,23 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function ($router) {
     Route::get('/profile', [AuthController::class, 'profile']);
     Route::post('/logout', [AuthController::class, 'logout']);
 });
+Route::post('sendNotificationrToUser/{id}', [AuthController::class, 'sendNotificationrToUser']);
+
+
+
+Route::get('/pesan', [PesanController::class, 'index']);
+//Route::get('/pesan/{id}', [PesanController::class, 'show']);
+Route::delete('/pesan/{id}', [PesanController::class, 'destroy']);
+Route::post('/pesan', [PesanController::class, 'store']);
+
+Route::get('/emas', [EmasController::class, 'index']);
+//Route::get('/pesan/{id}', [PesanController::class, 'show']);
+Route::delete('/emas/{id}', [EmasController::class, 'destroy']);
+Route::post('/emas', [EmasController::class, 'store']);
+
+
+Route::get('/cuci', [CUciController::class, 'index']);
+
+Route::delete('/cuci/{id}', [CuciController::class, 'destroy']);
+
+Route::post('/cuci', [CuciController::class, 'store']);

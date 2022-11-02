@@ -22,4 +22,32 @@ class TabunganController extends Controller
         $tabungans->tanggal = $request->tanggal;
         $tabungans->save();
     }
+    public function update(Request $request, $id){
+        try{
+            //menemukan pertanyaan
+            $tabungans = Tabungan::find($id);
+            if(!$tabungans){
+                return response()->json([
+                    'message' => 'pertanyaan tidak ditemukan'
+                ],404);
+            }
+
+            $tabungans->total = $request->total;
+            $tabungans->tanggal= $request->tanggal;
+
+            
+            //update pertanyaan
+            $tabungans->save();
+
+            //respon json
+            return response()->json([
+                'message' => 'Tabungan berhasil diupdate'
+            ],200);
+
+        }catch(\Exception $e){
+            return response()->json([
+                'message' => "Something went really wrong"
+            ]);
+        }
+    }
 }

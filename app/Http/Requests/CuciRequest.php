@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PertanyaanRequest extends FormRequest
+class CuciRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,33 +25,36 @@ class PertanyaanRequest extends FormRequest
     {
         if (request()->isMethod('post')) {
             return[
-                'judul' => 'required|string|max:258',
-                'jawaban' => 'required|string',
-                
+                'nama' => 'required|string|max:258',
+                'nomor_hp' => 'required|string|max:258',
+                'jenis' => 'required|string|max:258',
             ];
         }else {
             return[
-                'judul' => 'required|string|max:258',
-                'jawaban' => 'required|string',
-                
+                'nama' => 'required|string|max:258',
+                'nomor_hp' => 'required|string|max:258',
+                'jenis' => 'required|string|max:258',
             ];
         }
+        
     }
-
     public function messages()
+   
     {
         if (request ()->isMethod('post')) {
             return[
-                'judul' => 'judul is required',
-                'jawaban' => 'jawaban is required',
-                
+                'nama' => 'Nama is required',
+                'nomor_hp' => 'nomor_hp is required',
+                'jenis' => 'jenis is required'
             ];
         }else {
             return[
-                'judul' => 'Judul is required',
-                'jawaban' => 'jawaban is required',
-                
+                'nama' => 'Nama is required',
+                'nomor_hp' => 'nomor_hp is required',
+                'jenis' => 'jenis is required'
             ];
         }
+        
     }
+
 }

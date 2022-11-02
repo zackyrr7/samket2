@@ -67,12 +67,12 @@ class PertanyaanController extends Controller
             $pertanyaan->jawaban= $request->jawaban;
 
             
-            //update barang
+            //update pertanyaan
             $pertanyaan->save();
 
             //respon json
             return response()->json([
-                'message' => 'Barang berhasil diupdate'
+                'message' => 'Pertanyaan berhasil diupdate'
             ],200);
 
         }catch(\Exception $e){

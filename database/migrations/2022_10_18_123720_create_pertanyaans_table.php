@@ -17,7 +17,7 @@ class CreatePertanyaansTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('judul');
-            $table->string('jawaban');
+            $table->text('jawaban');
         });
     }
 
