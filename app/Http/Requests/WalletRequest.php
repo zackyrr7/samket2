@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class EmasRequest extends FormRequest
+class WalletRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,14 +26,18 @@ class EmasRequest extends FormRequest
         if (request()->isMethod('post')) {
             return[
                 'nama' => 'required|string|max:258',
-                'emas' => 'required|string|max:10',
                 'nomor_hp' => 'required|string|max:258',
+                'jenis' => 'required|string|max:258',
+                'total' => 'required|string|max:258',
+                'no_wallet' => 'required|string|max:258',
             ];
         }else {
             return[
                 'nama' => 'required|string|max:258',
-                'emas' => 'required|string|max:10',
                 'nomor_hp' => 'required|string|max:258',
+                'jenis' => 'required|string|max:258',
+                'total' => 'required|string|max:258',
+                'no_wallet' => 'required|string|max:258',
             ];
         }
         
@@ -44,15 +48,18 @@ class EmasRequest extends FormRequest
         if (request ()->isMethod('post')) {
             return[
                 'nama' => 'Nama is required',
-                'emas' => 'emas is required',
-                'nomor_hp' => 'Nomor_hp is required'
+                'nomor_hp' => 'nomor_hp is required',
+                'jenis' => 'jenis is required',
+                'total' => 'total is required',
+                'no_wallet' => 'jenis is required'
             ];
         }else {
             return[
                 'nama' => 'Nama is required',
-                'emas' => 'emas is required',
-                'nomor_hp' => 'Nomor_hp is required'
-                
+                'nomor_hp' => 'nomor_hp is required',
+                'jenis' => 'jenis is required',
+                'total' => 'total is required',
+                'no_wallet' => 'jenis is required'
             ];
         }
         

@@ -28,12 +28,14 @@ class TabunganController extends Controller
             $tabungans = Tabungan::find($id);
             if(!$tabungans){
                 return response()->json([
-                    'message' => 'pertanyaan tidak ditemukan'
+                    'message' => 'tabungan tidak ditemukan'
                 ],404);
             }
 
             $tabungans->total = $request->total;
             $tabungans->tanggal= $request->tanggal;
+
+            
 
             
             //update pertanyaan

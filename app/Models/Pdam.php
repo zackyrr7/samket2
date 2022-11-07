@@ -5,15 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Pesan extends Model
+class pdam extends Model
 {
     use HasFactory;
     protected $fillable =[
         'nama',
-        'barang',
         'nomor_hp',
-        'alamat',
-        'tanggal',
-       
+        'air',
     ];
 }

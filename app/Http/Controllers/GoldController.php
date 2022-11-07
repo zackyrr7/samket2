@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\EmasRequest;
-use App\Models\Emas;
+use App\Models\Gold;
 use Illuminate\Http\Request;
 
 use function GuzzleHttp\Promise\all;
 
-class EmasController extends Controller
+class GoldController extends Controller
 {
     public function index(){
-        return Emas::all();
+        return Gold::all();
     }
 
 
@@ -19,13 +19,13 @@ class EmasController extends Controller
         try{
            
             //create barang
-            Emas::create([
+            Gold::create([
                 'nama' =>$request->nama,
-                'gold'=> $request->gold,
+                'emas'=> $request->emas,
                 'nomor_hp' => $request->nomor_hp,
                 
             ]);
-             return Emas::create($request->all());
+             return Gold::create($request->all());
        
         
             //Json Response
@@ -44,21 +44,21 @@ class EmasController extends Controller
     {
         //return pertanyaan::find($id);
         //detail pertanyaan
-        $emas = Emas::find($id);
-        if (!$emas){
+        $golds = Gold::find($id);
+        if (!$golds){
             return response()->json([
                 'message' => 'pertanyaan Tidak ditemukan'
             ],404);
         }return response() ->json([
-            'emas' => $emas
+            'gold' => $golds
         ]);
     }
 
     
     public function destroy($id)
     {
-        $emas = Emas::find($id);
-        if(!$emas) {
+        $golds = Gold::find($id);
+        if(!$golds) {
             return response()->json([
                 'message' => "Transaksi tidak Ditemukan"
             ],404);
@@ -67,7 +67,7 @@ class EmasController extends Controller
         
 
         //delete barang
-        $emas->delete();
+        $golds->delete();
 
         return response()->json([
             'message' => "pertanyaan berhasil di hapus"

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEmassTable extends Migration
+class CreatePdamsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateEmassTable extends Migration
      */
     public function up()
     {
-        Schema::create('Emass', function (Blueprint $table) {
+        Schema::create('pdams', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('gold');
             $table->string('nomor_hp');
+            $table->string('air');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateEmassTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('emass');
+        Schema::dropIfExists('pdams');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePesansTable extends Migration
+class CreateWalletsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreatePesansTable extends Migration
      */
     public function up()
     {
-        Schema::create('Pesans', function (Blueprint $table) {
+        Schema::create('wallets', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('barang');
-           
-            $table->String('nomor_hp');
-            $table->string('alamat');
-            $table->string('tanggal');
+            $table->string('nomor_hp');
+            $table->string('jenis');
+            $table->string('total');
+            $table->string('no_wallet');
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ class CreatePesansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Pesans');
+        Schema::dropIfExists('wallets');
     }
 }

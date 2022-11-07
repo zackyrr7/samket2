@@ -88,4 +88,33 @@ class AuthController extends Controller
             ]
         );
     }
+    public function update(Request $request, $id){
+        try{
+            //menemukan pertanyaan
+            $user = User::find($id);
+            if(!$user){
+                return response()->json([
+                    'message' => 'pertanyaan tidak ditemukan'
+                ],404);
+            }
+
+            $user->name = $request->name;
+            $user->nomor_hp= $request->nomor_hp;
+            $user->password= $request->password;
+
+            
+            //update pertanyaan
+            $user->save();
+
+            //respon json
+            return response()->json([
+                'message' => 'User berhasil diupdate'
+            ],200);
+
+        }catch(\Exception $e){
+            return response()->json([
+                'message' => "Something went really wrong"
+            ]);
+        }
+    }
 }
